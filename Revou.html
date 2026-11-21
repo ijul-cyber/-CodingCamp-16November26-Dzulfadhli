@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Life Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- ============ HEADER: GREETING ============ -->
+  <header class="dashboard-header">
+    <div class="header-top">
+      <div class="greeting-block">
+        <p class="greeting-text" id="greetingText">Selamat datang</p>
+        <h1 class="clock" id="clock">00:00:00</h1>
+        <p class="date-text" id="dateText">Hari, Tanggal Bulan Tahun</p>
+      </div>
+
+      <!-- Settings: dark mode + custom name -->
+      <div class="header-settings">
+        <div class="name-input-group">
+          <label for="nameInput" class="sr-only">Nama Anda</label>
+          <input type="text" id="nameInput" class="name-input" placeholder="Masukkan nama..." maxlength="30" />
+        </div>
+        <button class="theme-toggle" id="themeToggle" title="Ganti mode terang/gelap" aria-label="Ganti mode terang gelap">
+          <span class="theme-icon" id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MAIN GRID ============ -->
+  <main class="dashboard-grid">
+
+    <!-- ===== Focus Timer ===== -->
+    <section class="card card-timer" aria-label="Pengatur waktu fokus">
+      <h2 class="card-title">⏱️ Pengatur Waktu Fokus</h2>
+
+      <div class="timer-display" id="timerDisplay">25:00</div>
+
+      <div class="timer-controls">
+        <button class="btn btn-start" id="startBtn">Mulai</button>
+        <button class="btn btn-stop" id="stopBtn" disabled>Stop</button>
+        <button class="btn btn-reset" id="resetBtn">Reset</button>
+      </div>
+
+      <!-- Custom Pomodoro duration -->
+      <div class="timer-config">
+        <label for="durationInput" class="timer-config-label">Durasi (menit):</label>
+        <div class="duration-row">
+          <input type="number" id="durationInput" class="duration-input" min="1" max="90" value="25" />
+          <button class="btn btn-small" id="setDurationBtn">Terapkan</button>
+        </div>
+        <div class="timer-presets">
+          <button class="preset-btn" data-min="15">15</button>
+          <button class="preset-btn" data-min="25">25</button>
+          <button class="preset-btn" data-min="45">45</button>
+          <button class="preset-btn" data-min="60">60</button>
+        </div>
+        <p class="timer-status" id="timerStatus">Tekan Mulai untuk memulai sesi fokus</p>
+      </div>
+    </section>
+
+    <!-- ===== To-Do List ===== -->
+    <section class="card card-todo" aria-label="Daftar tugas">
+      <h2 class="card-title">📝 Daftar Tugas</h2>
+
+      <form class="todo-form" id="todoForm">
+        <input type="text" id="todoInput" class="todo-input" placeholder="Tambahkan tugas baru..." maxlength="120" autocomplete="off" />
+        <button type="submit" class="btn btn-add">Tambah</button>
+      </form>
+      <p class="todo-hint" id="todoHint"></p>
+
+      <ul class="todo-list" id="todoList">
+        <!-- Tasks injected by JS -->
+      </ul>
+
+      <div class="todo-footer">
+        <span class="todo-count" id="todoCount">0 tugas</span>
+        <button class="btn btn-clear" id="clearCompletedBtn">Hapus Selesai</button>
+      </div>
+    </section>
+
+    <!-- ===== Quick Links ===== -->
+    <section class="card card-links" aria-label="Tautan cepat">
+      <h2 class="card-title">🔗 Tautan Cepat</h2>
+
+      <form class="link-form" id="linkForm">
+        <input type="text" id="linkName" class="link-input" placeholder="Nama (cth: Google)" maxlength="30" />
+        <input type="url" id="linkUrl" class="link-input" placeholder="https://..." />
+        <button type="submit" class="btn btn-add">Tambah</button>
+      </form>
+
+      <div class="link-grid" id="linkGrid">
+        <!-- Links injected by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="dashboard-footer">
+    <p>Life Dashboard — Dibangun dengan HTML, CSS &amp; JavaScript. Data tersimpan di browser Anda.</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
